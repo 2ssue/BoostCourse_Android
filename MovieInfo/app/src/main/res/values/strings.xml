@@ -24,4 +24,6 @@
     <string name="review_button">작성하기</string>
     <string name="view_all">모두보기</string>
     <string name="booking">예매하기</string>
+    <string name="thumbs_down">1</string>
+    <string name="thumbs_up">15</string>
 </resources>
