@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/simpleInfoLayer"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/simpleinfo_background"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/ImgMoviePoster"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/movie_name"
+                app:srcCompat="@drawable/image11" />
+
+            <LinearLayout
+                android:id="@+id/simpleInfoTextLayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="32dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tMovieName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_15"
+                    android:drawablePadding="5dp"
+                    android:text="@string/movie_name"
+                    android:textColor="@color/colorPrimaryWhite"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tMovieOpen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/movie_opening"
+                    android:textColor="@color/colorPrimaryWhite"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/tMovieGenre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/movie_genre"
+                    android:textColor="@color/colorPrimaryWhite"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tThumbsUp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/thumbs_up"
+                        android:drawablePadding="5dp"
+                        android:text="15"
+                        android:textColor="@color/colorPrimaryWhite"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tThumbsDown"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/thumbs_down"
+                        android:drawablePadding="5dp"
+                        android:text="1"
+                        android:textColor="@color/colorPrimaryWhite"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/screeningInfoLayer"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/background_light"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/rateLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tRateTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="@string/booking_rate" />
+
+                <TextView
+                    android:id="@+id/tRateContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/booking_rate__text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gradeLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tGradeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="@string/movie_grade" />
+
+                <TextView
+                    android:id="@+id/tGradeContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/movie_grade__text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/audienceLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tAudienceTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="@string/total_audience" />
+
+                <TextView
+                    android:id="@+id/tAudienceContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/total_audience__text" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/SummaryLayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/background_light"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tSummaryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/movie_summary"
+                android:textSize="15sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tSummaryContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/movie_summary__contents" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/makerInfoLayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@android:color/background_light"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tMakerTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/maker_title"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/directorLayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tDirectorTitle"
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/director_title"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tDirectorContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/director_contents" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/actorLayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tActorTitle"
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/actor_title"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tActorContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/actor_contents" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/commentLayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@android:color/background_light"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tCommentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comment_title"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/btnReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:background="#00000000"
+                    android:drawableLeft="@drawable/review_custom"
+                    android:padding="3dp"
+                    android:text="@string/review_button"
+                    android:textColor="#DC4C1A"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"></LinearLayout>
+
+            <Button
+                android:id="@+id/btnViewAll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_border"
+                android:text="@string/view_all" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/snsLayer"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@android:color/background_light"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnFacebook"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_facebook" />
+
+            <Button
+                android:id="@+id/btnKakao"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_kakao" />
+
+            <Button
+                android:id="@+id/btnBooking"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_background"
+                android:text="@string/booking"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
