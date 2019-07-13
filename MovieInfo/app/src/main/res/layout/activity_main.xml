@@ -14,7 +14,7 @@
         <LinearLayout
             android:id="@+id/simpleInfoLayer"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/simpleinfo_background"
             android:orientation="horizontal"
             android:padding="10dp">
@@ -31,7 +31,6 @@
                 android:id="@+id/simpleInfoTextLayer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="32dp"
                 android:layout_weight="1"
@@ -41,7 +40,6 @@
                     android:id="@+id/tMovieName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_15"
                     android:drawableEnd="@drawable/ic_15"
                     android:drawablePadding="5dp"
                     android:text="@string/movie_name"
@@ -78,10 +76,8 @@
                         android:id="@+id/tThumbsUp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:clickable="true"
-                        android:drawableLeft="@drawable/thumbs_up"
                         android:drawableStart="@drawable/thumbs_up"
                         android:drawablePadding="5dp"
                         android:text="@string/thumbs_up"
@@ -96,7 +92,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:clickable="true"
-                        android:drawableLeft="@drawable/thumbs_down"
                         android:drawablePadding="5dp"
                         android:text="@string/thumbs_down"
                         android:textColor="@color/colorPrimaryWhite"
@@ -169,7 +164,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
                         android:numStars="5"
                         android:paddingTop="2dp"
                         android:rating="4.1"
@@ -179,10 +173,8 @@
                         android:id="@+id/tGradeContent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
                         android:layout_marginStart="2dp"
                         android:layout_toEndOf="@+id/ratingBar"
-                        android:layout_toRightOf="@+id/ratingBar"
                         android:text="@string/movie_grade__text"
                         android:textAllCaps="true" />
                 </RelativeLayout>
@@ -317,14 +309,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp">
 
                 <TextView
                     android:id="@+id/tCommentTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
                     android:text="@string/comment_title"
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
@@ -334,10 +326,10 @@
                     android:id="@+id/btnReview"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:background="#00000000"
-                    android:drawableLeft="@drawable/review_custom"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:drawableStart="@drawable/review_custom"
                     android:padding="3dp"
                     android:text="@string/review_button"
@@ -346,10 +338,10 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/textView"
+            <ListView
+                android:id="@+id/listview2"
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/btnViewAll"
@@ -382,7 +374,6 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
                 android:background="@drawable/ic_kakao"
                 android:layout_marginStart="5dp" />
 
@@ -391,7 +382,6 @@
                 style="?android:attr/buttonBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
                 android:background="@drawable/button_background"
                 android:text="@string/booking"
                 android:textColor="@android:color/white"

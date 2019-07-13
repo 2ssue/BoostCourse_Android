@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">영화 정보</string>
+    <string name="app_name">씨네마천국</string>
     <string name="movie_name">군도</string>
     <string name="movie_opening">2014.07.23 개봉</string>
     <string name="movie_genre">액션/137분</string>

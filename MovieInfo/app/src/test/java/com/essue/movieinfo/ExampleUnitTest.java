@@ -1,4 +1,4 @@
-package com.e_ssue.movieinfo;
+package com.essue.movieinfo;
 
 import org.junit.Test;
 
