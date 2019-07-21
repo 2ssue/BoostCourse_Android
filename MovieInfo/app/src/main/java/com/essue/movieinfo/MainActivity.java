@@ -1,14 +1,17 @@
 package com.essue.movieinfo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
+import android.content.Intent;
+import android.media.Rating;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,41 +19,29 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     TextView thumbsDownNum;
     TextView thumbsUpNum;
+    TextView movieName;
+    ListView listview;
+    RatingBar movieRating;
 
     boolean thumbsUpState = false;
     boolean thumbsDownState = false;
+
+    static final int COMMENT_MODE = 101;
+    static final int VIEW_ALL_MODE = 103;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listview = (ListView) findViewById(R.id.listview2);
-
-        CommentAdapter adapter = new CommentAdapter();
-        adapter.addItem(new Comment("이수정", "재밌네요", 1, "1분전", 5));
-        adapter.addItem(new Comment("e2ssue", "노잼", 0, "20분전", 2.3));
-        adapter.addItem(new Comment("e2ssue", "노잼", 0, "20분전", 1.5));
-        adapter.addItem(new Comment("이수정", "재밌네요", 1, "1분전", 3.4));
-
-        listview.setAdapter(adapter);
+        listview = (ListView) findViewById(R.id.listview2);
 
         thumbsUpNum = (TextView) findViewById(R.id.tThumbsUp);
 
         thumbsUpNum.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if(thumbsUpState) {
-                    decreaseCount(thumbsUpNum, true);
-                }else{
-                    if(thumbsDownState){
-                        decreaseCount(thumbsDownNum, false);
-                        thumbsDownState = !thumbsDownState;
-                    }
-                    increaseCount(thumbsUpNum, true);
-                }
-
-                thumbsUpState = !thumbsUpState;
+                thumbsUpClick();
             }
         });
 
@@ -59,19 +50,68 @@ public class MainActivity extends AppCompatActivity {
         thumbsDownNum.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if(thumbsDownState){
-                    decreaseCount(thumbsDownNum, false);
-                }else{
-                    if(thumbsUpState){
-                        decreaseCount(thumbsUpNum, true);
-                        thumbsUpState = !thumbsUpState;
-                    }
-                    increaseCount(thumbsDownNum, false);
-                }
-
-                thumbsDownState = !thumbsDownState;
+                thumbsDownClick();
             }
         });
+
+        Button review = (Button) findViewById(R.id.btnReview);
+        movieName = (TextView) findViewById(R.id.tMovieName);
+        review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserCommentActivity.class);
+                intent.putExtra("movie_name", movieName.getText());
+                startActivityForResult(intent, COMMENT_MODE);
+            }
+        });
+
+        Button viewAll = (Button) findViewById(R.id.btnViewAll);
+        movieRating = (RatingBar) findViewById(R.id.movie_ratingBar);
+        viewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ViewAllActivity.class);
+                intent.putExtra("movie_name", movieName.getText());
+                intent.putExtra("rating", (double)movieRating.getRating());
+                startActivityForResult(intent, VIEW_ALL_MODE);
+            }
+        });
+    }
+
+    public void thumbsUpClick(){
+        if(thumbsUpState) {
+            decreaseCount(thumbsUpNum, true);
+        }else{
+            if(thumbsDownState){
+                decreaseCount(thumbsDownNum, false);
+                thumbsDownState = !thumbsDownState;
+            }
+            increaseCount(thumbsUpNum, true);
+        }
+
+        thumbsUpState = !thumbsUpState;
+    }
+
+    public void thumbsDownClick(){
+        if(thumbsDownState){
+            decreaseCount(thumbsDownNum, false);
+        }else{
+            if(thumbsUpState){
+                decreaseCount(thumbsUpNum, true);
+                thumbsUpState = !thumbsUpState;
+            }
+            increaseCount(thumbsDownNum, false);
+        }
+
+        thumbsDownState = !thumbsDownState;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CommentAdapter adapter = new CommentAdapter(getApplication());
+
+        listview.setAdapter(adapter);
     }
 
     public void increaseCount(TextView textview, boolean upflag){
@@ -94,46 +134,18 @@ public class MainActivity extends AppCompatActivity {
             textview.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumb_down, 0,0,0);
     }
 
-    class CommentAdapter extends BaseAdapter {
-        ArrayList<Comment> comments = new ArrayList<>();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        public void addItem(Comment comment){
-            comments.add(comment);
-        }
+        if(requestCode == COMMENT_MODE){
+            if(data != null){
+                String comments = data.getStringExtra("comment");
+                double ratingNum = data.getDoubleExtra("rating", 0);
 
-        @Override
-        public int getCount() {
-            return comments.size();
-        }
+                CommentList.getInstance().addComment(new Comment("이수정", comments, 0, "0분전", ratingNum));
 
-        @Override
-        public Object getItem(int i) {
-            return comments.get(i);
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            CommentsView comments_view = null;
-
-            if (view == null) {
-                comments_view = new CommentsView(getApplication());
-            } else {
-                comments_view = (CommentsView) view;
             }
-
-            Comment comment = comments.get(i);
-            comments_view.setName(comment.getName());
-            comments_view.setComment(comment.getComment());
-            comments_view.setRecommend(comment.getRecommend());
-            comments_view.setTime(comment.getTime());
-            comments_view.setRating(comment.getRating());
-
-            return comments_view;
         }
     }
 }

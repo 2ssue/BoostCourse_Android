@@ -9,7 +9,17 @@
         android:roundIcon="@drawable/ic_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.essue.movieinfo.MainActivity">
+        <activity android:name=".ViewAllActivity"
+            android:label="모두보기">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
+            android:name=".UserCommentActivity"
+            android:label="한줄평 작성">
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
